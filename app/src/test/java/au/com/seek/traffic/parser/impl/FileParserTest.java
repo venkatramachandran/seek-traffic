@@ -15,7 +15,7 @@ import java.util.List;
 public class FileParserTest {
     Parser p;
     @Before public void setup() {
-        p = new FileParser(new File("resources/sample.txt"));
+        p = new FileParser(new File("src/test/resources/sample.txt"));
     }
     @Test public void parsesSample() {
         try {
@@ -24,13 +24,14 @@ public class FileParserTest {
             assertEquals(c.size(), 24);
             assertEquals(c.get(0).getVehicleCount(), 5);
             assertEquals(c.get(0).getAt(), LocalDateTime.parse("2016-12-01T05:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+            assertEquals(c.get(0).toString(), "2016-12-01T05:00:00 5");
         } catch (ParseException pe) {
 
         }
     }
     @Test public void testThrowsException() {
         Exception e = assertThrows(ParseException.class, () -> {
-            new FileParser(new File("resources/nonexistent.txt")).parse();
+            new FileParser(new File("src/test/resources/nonexistent.txt")).parse();
         });
     }
 }

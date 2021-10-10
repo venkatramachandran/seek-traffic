@@ -1,5 +1,7 @@
 package au.com.seek.traffic.model;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class Count {
     private LocalDateTime at;
     private int vehicleCount;
@@ -15,5 +17,9 @@ public class Count {
 
     public LocalDateTime getAt() {
         return this.at;
+    }
+
+    public String toString() {
+        return this.at.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+ " "+this.vehicleCount;
     }
 }
