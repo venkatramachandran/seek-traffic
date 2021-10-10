@@ -10,6 +10,7 @@ import au.com.seek.traffic.parser.impl.FileParser;
 import au.com.seek.traffic.exception.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class FileParserTest {
     Parser p;
@@ -18,13 +19,18 @@ public class FileParserTest {
     }
     @Test public void parsesSample() {
         try {
-            Count[] c = p.parse();
+            List<Count> c = p.parse();
             assertNotNull(p);
-            assertEquals(c.length, 24);
-            assertEquals(c[0].getVehicleCount(), 5);
-            assertEquals(c[0].getAt(), LocalDateTime.parse("2016-12-01T05:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+            assertEquals(c.size(), 24);
+            assertEquals(c.get(0).getVehicleCount(), 5);
+            assertEquals(c.get(0).getAt(), LocalDateTime.parse("2016-12-01T05:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         } catch (ParseException pe) {
 
         }
+    }
+    @Test public void testThrowsException() {
+        Exception e = assertThrows(ParseException.class, () -> {
+            new FileParser(new File("resources/nonexistent.txt")).parse();
+        });
     }
 }

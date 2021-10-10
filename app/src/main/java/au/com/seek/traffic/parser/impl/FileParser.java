@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
 
 public class FileParser implements Parser {
     private File source;
@@ -20,7 +22,7 @@ public class FileParser implements Parser {
         this.source = source;
     }
 
-    public Count[] parse() throws ParseException {
+    public List<Count> parse() throws ParseException {
         List<Count> retVal = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(this.source))) {
             String s;
@@ -34,6 +36,6 @@ public class FileParser implements Parser {
         } catch (Exception e) {
             throw new ParseException(e);
         }
-        return retVal.toArray(new Count[0]);
+        return retVal;
     }
 }
