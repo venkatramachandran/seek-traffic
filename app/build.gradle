@@ -28,8 +28,3 @@ application {
     // Define the main class for the application.
     mainClass = 'au.com.seek.traffic.App'
 }
-test {
-    testLogging {
-        showStandardStreams = true
-    }
-}

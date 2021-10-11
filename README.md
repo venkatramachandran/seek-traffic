@@ -1,7 +1,13 @@
 # seek-traffic
 
-The program should output:
-* ~~The number of cars seen in total~~
-* ~~A sequence of lines where each line contains a date (in yyyy-mm-dd format) and the number of cars seen on that day (eg. 2016-11-23 289) for all days listed in the input file.~~
-* ~~The top 3 half hours with most cars, in the same format as the input file~~
-* The 1.5 hour period with least​ cars (i.e. 3 contiguous half hour records)
+## Running
+Executing the main logic needs an input file as a mandatory param. For example, using the sample.txt should be run using
+`./gradlew run --args build/resources/main/sample.txt`
+
+## Testing
+unit tests can be run using `./gradlew test`.
+
+## TO DO
+- [ ] Add more unit tests
+- [ ] For the least traffic seen in 90 minutes, figure out a way to make 90 minutes as configurable/parameter
+- [ ] For the least traffic seen in 90 minutes, figure out a way to return both start and end time

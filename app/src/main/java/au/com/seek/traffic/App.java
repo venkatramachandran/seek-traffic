@@ -26,6 +26,7 @@ public class App {
             Service s = new Service(cars);
             System.out.println(s.getTotalCarsSeen());
             s.getDailyStatistics().stream().forEach(System.out::println);
+            System.out.println("Least amount of cars seen in 90 minutes is in the period starting "+s.getLeastTrafficHoursStart());
         } catch(ParseException e) {
             System.out.println("caught error: "+e.getCause().getMessage());
         }

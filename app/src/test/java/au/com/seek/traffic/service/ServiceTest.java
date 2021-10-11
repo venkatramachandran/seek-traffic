@@ -48,4 +48,9 @@ public class ServiceTest {
         assertEquals(c.get(0).getVehicleCount(), 4);
         assertEquals(c.get(0).getAt(), LocalDate.parse("2016-12-09", DateTimeFormatter.ISO_LOCAL_DATE));
     }
+
+    @Test public void testgetLeastTrafficHoursStart() {
+        LocalDateTime start = s.getLeastTrafficHoursStart();
+        assertEquals(start.toString(), "2016-12-01T05:00");
+    }
 }
